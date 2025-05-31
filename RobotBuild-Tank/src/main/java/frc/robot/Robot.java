@@ -5,8 +5,15 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import com.revrobotics.spark.SparkLowLevel;
+import com.revrobotics.spark.SparkMax;
+import com.revrobotics.spark.config.SparkBaseConfig;
+import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
+import com.revrobotics.spark.config.SparkMaxConfig;
 
 /**
  * The methods in this class are called automatically corresponding to each mode, as described in
@@ -19,6 +26,12 @@ public class Robot extends TimedRobot {
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
 
+
+  //Keshav edits: Creating new variables for SparkMax motors
+  private SparkMax leftLeader;
+  private SparkMax leftFollower;
+  private SparkMax rightLeader;
+  private SparkMax rightFollower;;
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -27,6 +40,22 @@ public class Robot extends TimedRobot {
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     m_chooser.addOption("My Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);
+
+    //Keshav Edits:
+    //Initialize Motors:
+    //Set followers to leaeders
+    leftLeader = new SparkMax(1, SparkLowLevel.MotorType.kBrushless);
+    leftFollower = new SparkMax(2, SparkLowLevel.MotorType.kBrushless);
+    rightLeader = new SparkMax(3, SparkLowLevel.MotorType.kBrushless);
+    rightFollower = new SparkMax(4, SparkLowLevel.MotorType.kBrushless);
+
+    //configure leader motors:
+    
+  
+
+    
+
+    
   }
 
   /**
