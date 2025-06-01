@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import com.revrobotics.spark.SparkBase;
 import com.revrobotics.spark.SparkLowLevel;
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.config.SparkBaseConfig;
@@ -25,13 +26,25 @@ public class Robot extends TimedRobot {
   private static final String kCustomAuto = "My Auto";
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
-
-
   //Keshav edits: Creating new variables for SparkMax motors
   private SparkMax leftLeader;
   private SparkMax leftFollower;
   private SparkMax rightLeader;
   private SparkMax rightFollower;;
+
+  public void configureMotors(){
+//Configure motors:
+SparkMaxConfig config = new SparkMaxConfig();
+
+  config.idleMode(IdleMode.kBrake);
+  config.smartCurrentLimit(40); //Set current limit to 40A
+  config.openLoopRampRate(0.5); 
+  config.closedLoopRampRate(0.5); 
+  config.inverted(false); // 
+
+  //Apply config to leader motors
+
+  }
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -49,7 +62,6 @@ public class Robot extends TimedRobot {
     rightLeader = new SparkMax(3, SparkLowLevel.MotorType.kBrushless);
     rightFollower = new SparkMax(4, SparkLowLevel.MotorType.kBrushless);
 
-    //configure leader motors:
     
   
 
