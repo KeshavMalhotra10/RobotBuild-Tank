@@ -2,8 +2,10 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
+//using the frc.robot package for the robot code
 package frc.robot;
 
+//importing necessary libraries
 import edu.wpi.first.util.sendable.SendableRegistry;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Timer;
@@ -16,7 +18,9 @@ import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
  * the TimedRobot documentation. If you change the name of this class or the package after creating
  * this project, you must also update the manifest file in the resource directory.
  */
+
 public class Robot extends TimedRobot {
+  // Defining motor controllers and drive system
   private final PWMSparkMax m_leftDrive = new PWMSparkMax(0);
   private final PWMSparkMax m_rightDrive = new PWMSparkMax(1);
   private final DifferentialDrive m_robotDrive =
@@ -36,7 +40,7 @@ public class Robot extends TimedRobot {
   }
 
   /** This function is run once each time the robot enters autonomous mode. */
-  @Override
+  @Override // We use override when we are attempting to stop the default behavior of a method
   public void autonomousInit() {
     m_timer.restart();
   }
